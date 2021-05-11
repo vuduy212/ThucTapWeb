@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<MobileStore.Models.DAO.productViewModel>
+
 @using MobileStore.Models.Entity
 
 
@@ -13,6 +14,10 @@
         ViewBag.GioHangCount = cart.Count;
     }
 }
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v10.0&appId=969972810209718&autoLogAppEvents=1" nonce="mG0QPVJn"></script>
+
 
 <!-- Page Content -->
 <div class="page-heading header-text">
@@ -45,7 +50,7 @@
                 <br>
 
                 <form action="" method="post">
-                    
+
                     @Html.Action("ProductByID")
 
                 </form>
@@ -61,16 +66,18 @@
     </div>
 </div>
 
+<div class="fb-comments" data-href="https://localhost:44323/Product/ProductDetail/@ViewBag.productId" data-width="" data-numposts="5"></div>
+
 @section Scripts{
     <script type="text/javascript">
         $(function () {
             var number = @ViewBag.GioHangCount;
             $("#addToCart").click(function () {
-                
+
                 var color = $("#imageById option:selected").val();
                 var quantity = $('#quantity-product').val();
                 var id = $('#imageMain').attr('value');
-                
+
                 number = Number($("#numberProducts").text()) + 1
                 $("#numberProducts").text(number);
                 $("#ColorProduct").text(color);

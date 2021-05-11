@@ -67,6 +67,8 @@ namespace MobileStore.Controllers
             List<Product> products = db.Products.ToList();
             List<Image> images = db.Images.ToList();
 
+
+            ViewBag.productId = id;
             var result = from p in products
                          join i in images on p.productID equals i.productID
                          where p.productID == id
@@ -86,6 +88,8 @@ namespace MobileStore.Controllers
         public ActionResult ProductByID(int id)
         {
             ProductDAO productDAO = new ProductDAO();
+            var product = productDAO.GetById(id);
+            
             return PartialView("_ProductByID", productDAO.GetById(id));
         }
 
