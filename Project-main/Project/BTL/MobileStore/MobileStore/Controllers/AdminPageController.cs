@@ -50,7 +50,11 @@ namespace MobileStore.Controllers
                     userSession.UserID = user.UserID;
                     Session.Add(UserLogin.USER_SESSION, userSession);
                     Session["USER_SESSION"] = userSession.Username;
-                    return RedirectToAction("Index", "AdminPage");
+                    if (userSession.Username.ToString() == "admin")
+                    {
+                        return RedirectToAction("Index", "AdminPage");
+                    }
+                    return RedirectToAction("Index", "Home");
                 }
                 else if(result == 0)
                 {

@@ -77,9 +77,9 @@
                         <li>
                             @using (Html.BeginForm("SearchProduct", "Ajax"))
                             {
-                                @Html.TextBox("Search", "", htmlAttributes: new { @class = "TextBoxSearch", @placeholder = "Tìm Kiếm" });
-                                <input type="submit" value="Search" />
-                            }
+                        @Html.TextBox("productName", "", htmlAttributes: new { @class = "TextBoxSearch", @placeholder = "Enter product name:" });
+                        <input type="submit" value="Search" />
+                        }
                         </li>
                     </ul>
                 </div>
@@ -214,6 +214,14 @@
                 t.style.color = '#fff';
             }
         }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#productName').autocomplete({
+                source: '@Url.Action("SearchProduct", "Ajax")'
+            });
+        });
     </script>
 
 
